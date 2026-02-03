@@ -93,6 +93,66 @@
 
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-sx-12">
+                    <div class="order-details">
+                        <h2 class="title-checkout"><i class="icon-basket-loaded"></i>Your Order</h2>
+                        <div class="order_review margin-bottom-35">
+                            <table class="table table-responsive table-review-order">
+                                <thead>
+                                <tr>
+                                    <th class="product-name">Product</th>
+                                    <th class="product-total">Total</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><p>Challenge Battery Hammer Drill</p></td>
+                                    <td><p class="price">$190.00</p></td>
+                                </tr>
+                                <tr>
+                                    <td><p>Power X Change Battery - 3.0 mAh</p></td>
+                                    <td><p class="price">$34.00</p></td>
+                                </tr>
+                                <tr>
+                                    <td><p>Percussion Hammer Drill</p></td>
+                                    <td><p class="price">$87.00</p></td>
+                                </tr>
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th>Subtotal</th>
+                                    <td>
+                                        <p class="price">$87.00</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Tax</th>
+                                    <td>
+                                        <p class="price">$87.00</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Shipping</th>
+                                    <td>
+                                        <form action="#" class="shipping">
+                                            <div class="radio">
+                                                <label><input checked="" type="radio"> <span>Free Shipping</span></label>
+                                            </div>
+                                            <div class="radio">
+                                                <label><input type="radio"> <span>Flat Rate:</span> </label><span class="price"> $10.00</span>
+                                            </div>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Total</th>
+                                    <td><p class="price">$197.00</p></td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-sx-12">
                     <!-- Payment Method -->
                     <h2 class="title-checkout">
                         <i class="icon-credit-card"></i>
@@ -138,60 +198,6 @@
                         <a href="#" class="btn btn-common btn-full">Place Order Now <span class="icon-action-redo"></span></a>
                     </div>
                     <!-- /GRAND TOTAL -->
-                </div>
-                <div class="col-md-6 col-sm-6 col-sx-12">
-                    <div class="order-details">
-                        <h2 class="title-checkout"><i class="icon-basket-loaded"></i>Your Order</h2>
-                        <div class="order_review margin-bottom-35">
-                            <table class="table table-responsive table-review-order">
-                                <thead>
-                                <tr>
-                                    <th class="product-name">Product</th>
-                                    <th class="product-total">Total</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td><p>Challenge Battery Hammer Drill</p></td>
-                                    <td><p class="price">$190.00</p></td>
-                                </tr>
-                                <tr>
-                                    <td><p>Power X Change Battery - 3.0 mAh</p></td>
-                                    <td><p class="price">$34.00</p></td>
-                                </tr>
-                                <tr>
-                                    <td><p>Percussion Hammer Drill</p></td>
-                                    <td><p class="price">$87.00</p></td>
-                                </tr>
-                                </tbody>
-                                <tfoot>
-                                <tr>
-                                    <th>Subtotal</th>
-                                    <td>
-                                        <p class="price">$87.00</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>Shipping</th>
-                                    <td>
-                                        <form action="#" class="shipping">
-                                            <div class="radio">
-                                                <label><input checked="" type="radio"> <span>Free Shipping</span></label>
-                                            </div>
-                                            <div class="radio">
-                                                <label><input type="radio"> <span>Flat Rate:</span> </label><span class="price"> $10.00</span>
-                                            </div>
-                                        </form>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>Total</th>
-                                    <td><p class="price">$197.00</p></td>
-                                </tr>
-                                </tfoot>
-                            </table>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
