@@ -66,7 +66,7 @@
                                     </div>
                                 </div>
                                 <div class="product-info">
-                                    <h4 class="product-title"><a href="product-details.html">Qui Ratione Volup</a></h4>
+                                    <h4 class="product-title"><a href="{{ route('website.product.index') }}">Qui Ratione Volup</a></h4>
                                     <div class="align-items">
                                         <div class="pull-left">
                                             <span class="price">$49.00</span>
