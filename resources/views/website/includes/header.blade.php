@@ -7,10 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Ecommerce">
-    <title>eMart - eCommerce Website Template</title>
+    <title>@yield('title')</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('/') }}website/assets/img/favicon.png">
+    <link rel="shortcut icon" href="{{ asset('/') }}website/assets/img/favicon1.png">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('/') }}website/assets/css/bootstrap.min.css" type="text/css">
@@ -202,7 +202,7 @@
                         <i class="fa fa-bars"></i>
                     </button>
                     <a class="navbar-brand" href="{{ route('website.home') }}">
-                        <img src="{{ asset('/') }}website/assets/img/logo.png" alt="">
+                        <img src="{{ asset('/') }}website/assets/img/logo1.png" alt="">
                     </a>
                 </div>
                 <div class="navbar-collapse collapse">

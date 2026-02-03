@@ -114,8 +114,9 @@
                         </div>
                         <!-- Quantity Cart -->
                         <div class="quantity-cart">
-                            <button class="btn btn-common"><i class="icon-basket-loaded"></i> add to cart</button>
+                            <a href="{{ route('website.cart.index') }}"  class="btn btn-common"><i class="icon-basket-loaded"></i> add to cart</a>
                         </div>
+
                         <!-- Usefull Link -->
                         <ul class="usefull-link">
                             <li><a href="#"><i class="icon-envelope-open"></i> Email to a Friend</a></li>
