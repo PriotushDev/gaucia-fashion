@@ -201,7 +201,7 @@
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <i class="fa fa-bars"></i>
                     </button>
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="{{ route('website.home') }}">
                         <img src="{{ asset('/') }}website/assets/img/logo.png" alt="">
                     </a>
                 </div>

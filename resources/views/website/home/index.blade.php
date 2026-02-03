@@ -14,10 +14,10 @@
                         <h3 class="block-title">Product Categories</h3>
                         <ul class="vertical-menu">
                             <li>
-                                <a href="#">New Arrivals</a>
+                                <a href="{{ route('website.category.new.arrivals') }}">New Arrivals</a>
                             </li>
                             <li>
-                                <a href="#">All Products</a>
+                                <a href="{{ route('website.category.all.products') }}">All Products</a>
                             </li>
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button">
