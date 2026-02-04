@@ -11,6 +11,20 @@ class WebsiteController extends Controller
         return view('website.home.index');
     }
 
+    public function all_products()
+    {
+        return view('website.category.all-product');
+    }
+
+    public function new_arrivals()
+    {
+        return view('website.category.new-arrivals');
+    }
+
+    public function product_detail()
+    {
+        return view('website.product.index');
+    }
 
 
 

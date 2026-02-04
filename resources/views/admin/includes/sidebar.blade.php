@@ -47,8 +47,8 @@
                     </a>
                     <ul class="slide-menu">
                         <li class="side-menu-label1"><a href="javascript:void(0)">Category Module</a></li>
-                        <li><a href="form-elements.html" class="slide-item">Add Category</a></li>
-                        <li><a href="form-layouts.html" class="slide-item">Manage Category</a></li>
+                        <li><a href="{{ route('admin.category.create') }}" class="slide-item">Add Category</a></li>
+                        <li><a href="{{ route('admin.category.index') }}" class="slide-item">Manage Category</a></li>
                     </ul>
                 </li>
                 {{--Sub Category Module--}}

@@ -6,14 +6,14 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-
-    public function all_products()
+    public function index()
     {
-        return view('website.category.all-product');
+        return view('admin.category.index');
     }
 
-    public function new_arrivals()
+    public function create()
     {
-        return view('website.category.new-arrivals');
+        return view('admin.category.create');
     }
+
 }
