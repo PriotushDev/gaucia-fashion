@@ -6,6 +6,7 @@ use \App\Http\Controllers\CategoryController;
 use \App\Http\Controllers\ProductController;
 use \App\Http\Controllers\CartController;
 use \App\Http\Controllers\DashboardController;
+use \App\Http\Controllers\BrandController;
 
 Route::get('/', [WebsiteController::class, 'index'])->name('website.home');
 
@@ -22,6 +23,10 @@ Route::get('/cart', [CartController::class, 'index'])->name('website.cart.index'
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
     Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
 
-    // admin panel route
+    // Admin Panel Route
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+    // Brand Route
+    Route::get('/brand', [BrandController::class, 'index'])->name('admin.brand.index');
+    Route::get('/brand/create', [BrandController::class, 'create'])->name('admin.brand.create');
 });
