@@ -8,6 +8,7 @@ use \App\Http\Controllers\CartController;
 use \App\Http\Controllers\DashboardController;
 use \App\Http\Controllers\BrandController;
 use \App\Http\Controllers\SubCategoryController;
+use \App\Http\Controllers\UnitController;
 
 Route::get('/', [WebsiteController::class, 'index'])->name('website.home');
 Route::get('/all-products', [WebsiteController::class, 'all_products'])->name('website.category.all.products');
@@ -38,4 +39,11 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     // Sub-Category Route
     Route::get('/sub-category', [SubCategoryController::class, 'index'])->name('admin.sub_category.index');
     Route::get('/sub-category/create', [SubCategoryController::class, 'create'])->name('admin.sub_category.create');
+
+    // Unit Route
+    Route::get('/unit', [UnitController::class, 'index'])->name('admin.unit.index');
+    Route::get('/unit/create', [UnitController::class, 'create'])->name('admin.unit.create');
+
+
+
 });
