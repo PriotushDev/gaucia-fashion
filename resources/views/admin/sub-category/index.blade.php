@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 @section('title')
-    Category List
+    Sub Category List
 @endsection
 
 @section('content')
@@ -15,12 +15,12 @@
                 <!-- PAGE-HEADER -->
                 <div class="page-header">
                     <div>
-                        <h1 class="page-title">Category</h1>
+                        <h1 class="page-title"> Sub Category</h1>
                     </div>
                     <div class="ms-auto pageheader-btn">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
-                            <li class="breadcrumb-item"><a href="javascript:void(0);">Category</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0);"> Sub Category</a></li>
                             <li class="breadcrumb-item active" aria-current="page">List</li>
                         </ol>
                     </div>
@@ -32,7 +32,7 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header border-bottom">
-                                <h3 class="card-title">Category List</h3>
+                                <h3 class="card-title"> Sub Category List</h3>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -40,7 +40,8 @@
                                         <thead>
                                         <tr>
                                             <th class="wd-15p border-bottom-0">SL</th>
-                                            <th class="wd-15p border-bottom-0">Category Name</th>
+                                            <th class="wd-15p border-bottom-0"> Category Name</th>
+                                            <th class="wd-15p border-bottom-0"> Sub Category Name</th>
                                             <th class="wd-15p border-bottom-0">Description</th>
                                             <th class="wd-20p border-bottom-0">Image</th>
                                             <th class="wd-15p border-bottom-0">Status</th>
@@ -50,6 +51,7 @@
                                         <tr>
                                             <td>1</td>
                                             <td>Electronics</td>
+                                            <td>TV</td>
                                             <td>32 inch TV is best sell on market</td>
                                             <td>photo</td>
                                             <td>Active</td>
@@ -65,7 +67,7 @@
 
 
 
-    
+
 
 
             </div>
