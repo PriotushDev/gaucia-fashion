@@ -80,8 +80,8 @@
                         <span class="side-menu__label">Product Module</span><i class="angle fa fa-angle-right"></i></a>
                     <ul class="slide-menu">
                         <li class="side-menu-label1"><a href="javascript:void(0)"> Product Module</a></li>
-                        <li><a href="icons.html" class="slide-item"> Add Product</a></li>
-                        <li><a href="icons2.html" class="slide-item"> Manage Product</a></li>
+                        <li><a href="{{ route('admin.product.create') }}" class="slide-item"> Add Product</a></li>
+                        <li><a href="{{ route('admin.product.index') }}" class="slide-item"> Manage Product</a></li>
                     </ul>
                 </li>
                 {{--Order Module--}}

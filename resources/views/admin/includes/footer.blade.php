@@ -34,6 +34,7 @@
 <script src="{{ asset('/') }}admin/assets/js/sticky.js"></script>
 
 
+
 <!-- APEXCHART JS -->
 <script src="{{ asset('/') }}admin/assets/js/apexcharts.js"></script>
 
@@ -56,6 +57,24 @@
 <script src="{{ asset('/') }}admin/assets/js/reply.js"></script>
 
 
+<!--Internal Fileuploads js-->
+<script src="{{ asset('/') }}admin/assets/plugins/fileuploads/js/fileupload.js"></script>
+<script src="{{ asset('/') }}admin/assets/plugins/fileuploads/js/file-upload.js"></script>
+
+
+<!--Internal Fancy uploader js-->
+<script src="{{ asset('/') }}admin/assets/plugins/fancyuploder/jquery.ui.widget.js"></script>
+<script src="{{ asset('/') }}admin/assets/plugins/fancyuploder/jquery.fileupload.js"></script>
+<script src="{{ asset('/') }}admin/assets/plugins/fancyuploder/jquery.iframe-transport.js"></script>
+<script src="{{ asset('/') }}admin/assets/plugins/fancyuploder/jquery.fancy-fileupload.js"></script>
+<script src="{{ asset('/') }}admin/assets/plugins/fancyuploder/fancy-uploader.js"></script>
+
+<!-- INTERNAL Summernote Editor js -->
+<script src="{{ asset('/') }}admin/assets/plugins/summernote-editor/summernote1.js"></script>
+<script src="{{ asset('/') }}admin/assets/js/summernote.js"></script>
+
+
+
 <!-- COLOR THEME JS -->
 <script src="{{ asset('/') }}admin/assets/js/themeColors.js"></script>
 
@@ -64,6 +83,8 @@
 
 <!-- SWITCHER JS -->
 <script src="{{ asset('/') }}admin/assets/switcher/js/switcher.js"></script>
+
+
 
 </body>
 
