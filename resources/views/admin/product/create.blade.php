@@ -35,139 +35,168 @@
                     </div>
 
                     <div class="card-body">
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('admin.product.index') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
-                        <!-- Brand Name -->
+                        <!-- Category -->
                             <div class="form-group">
                                 <label class="form-label">Category Name</label>
-                                <select class="form-control select2 form-select" data-placeholder="Choose one">
+                                <select name="category_id" class="form-control select2 form-select" data-placeholder="Choose one" required>
                                     <option label="Choose one"></option>
                                     <option value="1">Chuck Testa</option>
-                                    <option value="2">Sage Cattabriga-Alosa</option>
-                                    <option value="3">Nikola Tesla</option>
-                                    <option value="4">Cattabriga-Alosa</option>
-                                    <option value="5">Nikola Alosa</option>
                                 </select>
                             </div>
+                            <!-- Sub Category -->
                             <div class="form-group">
                                 <label class="form-label">Sub Category Name</label>
-                                <select class="form-control select2 form-select" data-placeholder="Choose one">
+                                <select name="subcategory_id" class="form-control select2 form-select" data-placeholder="Choose one" required>
                                     <option label="Choose one"></option>
                                     <option value="1">Chuck Testa</option>
-                                    <option value="2">Sage Cattabriga-Alosa</option>
-                                    <option value="3">Nikola Tesla</option>
-                                    <option value="4">Cattabriga-Alosa</option>
-                                    <option value="5">Nikola Alosa</option>
                                 </select>
                             </div>
+                            <!-- Brand -->
                             <div class="form-group">
                                 <label class="form-label">Brand Name</label>
-                                <select class="form-control select2 form-select" data-placeholder="Choose one">
+                                <select name="brand_id" class="form-control select2 form-select" data-placeholder="Choose one" required>
                                     <option label="Choose one"></option>
                                     <option value="1">Chuck Testa</option>
-                                    <option value="2">Sage Cattabriga-Alosa</option>
-                                    <option value="3">Nikola Tesla</option>
-                                    <option value="4">Cattabriga-Alosa</option>
-                                    <option value="5">Nikola Alosa</option>
+                                </select>
+                            </div>
+                            <!-- Unit -->
+                            <div class="form-group">
+                                <label class="form-label">Unit Name</label>
+                                <select name="unit_id" class="form-control select2 form-select" data-placeholder="Choose one" required>
+                                    <option label="Choose one"></option>
+                                    <option value="1">Chuck Testa</option>
                                 </select>
                             </div>
 
+                            <!-- Product Name -->
                             <div class="mb-3">
-                                <label for="name" class="form-label"> Product Name</label>
+                                <label class="form-label">Product Name</label>
                                 <input
                                     type="text"
-                                    name="name"
-                                    id="name"
+                                    name="product_name"
                                     class="form-control"
                                     placeholder="Enter Product name"
                                     required
                                 >
                             </div>
-
-                            <!-- Brand Description -->
+                            <!-- Product Code -->
                             <div class="mb-3">
-                                <label for="description" class="form-label">Product Short Description</label>
-                                <textarea
-                                    name="description"
-                                    id="description"
-                                    class="form-control"
-                                    rows="3" placeholder="Enter Product description"
-                                    required >
-
-                                </textarea>
-                            </div>
-
-                            <!-- Summernote -->
-                            <div class="">
-                                <label for="description" class="form-label">Product Long Description</label>
-                                <div id="summernote"><p>Hello Summernote</p></div>
-                            </div>
-                            <!--End Row-->
-
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Meta Title</label>
+                                <label class="form-label">Product Code</label>
                                 <input
                                     type="text"
-                                    name="name"
-                                    id="name"
+                                    name="product_code"
+                                    class="form-control"
+                                    placeholder="Enter Product Code"
+                                    required
+                                >
+                            </div>
+                            <!-- Stock -->
+                            <div class="mb-3">
+                                <label class="form-label">Stock Amount</label>
+                                <input
+                                    type="number"
+                                    name="stock_amount"
+                                    class="form-control"
+                                    placeholder="Enter Stock Amount"
+                                    required
+                                >
+                            </div>
+                            <!-- Price -->
+                            <div class="mb-3">
+                                <label class="form-label">Product Price</label>
+                                <div class="input-group">
+                                    <input
+                                        type="number"
+                                        name="regular_price"
+                                        class="form-control"
+                                        placeholder=" Regular Price"
+                                        required
+                                    >
+                                    <input
+                                        type="number"
+                                        name="selling_price"
+                                        class="form-control"
+                                        placeholder=" Selling Price"
+                                        required
+                                    >
+                                </div>
+                            </div>
+
+                            <!-- Short Description -->
+                            <div class="mb-3">
+                                <label class="form-label">Product Short Description</label>
+                                <textarea
+                                    name="short_description"
+                                    class="form-control"
+                                    rows="3"
+                                    placeholder="Enter Product description"
+                                    required
+                                ></textarea>
+                            </div>
+
+                            <!-- Long Description -->
+                            <div class="mb-3">
+                                <label class="form-label">Product Long Description</label>
+                                <textarea name="long_description" id="summernote"></textarea>
+                            </div>
+
+                            <!-- Meta Title -->
+                            <div class="mb-3">
+                                <label class="form-label">Meta Title</label>
+                                <input
+                                    type="text"
+                                    name="meta_title"
                                     class="form-control"
                                     placeholder="Enter Meta title"
                                     required
                                 >
                             </div>
+                            <!-- Meta Description -->
                             <div class="mb-3">
-                                <label for="description" class="form-label">Meta Description</label>
+                                <label class="form-label">Meta Description</label>
                                 <textarea
-                                    name="description"
-                                    id="description"
+                                    name="meta_description"
                                     class="form-control"
-                                    rows="3" placeholder="Enter Meta Description"
-                                    required >
-
-                                </textarea>
-                            </div>
-
-                            <!-- Brand Image -->
-                            <div class="mb-3">
-                                <label for="image" class="form-label">Product Image</label>
-                                <input
-                                    type="file"
-                                    name="image"
-                                    id="image"
-                                    class="form-control"
+                                    rows="3"
+                                    placeholder="Enter Meta Description"
                                     required
-                                >
+                                ></textarea>
                             </div>
+
+
                             <div class="mb-3 col-md-4">
                                 <label for="image" class="form-label">Product Image</label>
-                                <input type="file" class="dropify" data-height="200" />
+                                <input type="file" name="image" class="dropify" data-height="200" />
                             </div>
+
                             <div class="mb-3">
                                 <label for="image" class="form-label">Product Other Image</label>
                                 <input
                                     id="demo"
                                     type="file"
-                                    name="files"
+                                    name="others_image[]"
                                     accept=" image/jpeg, image/png, image/jpg"
                                     multiple
                                 />
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Feature Status</label>
-                                <select class="form-control select2 form-select" data-placeholder="Choose one">
+                                <select class="form-control select2 form-select" name="feature_status" data-placeholder="Choose one">
                                     <option label="Choose one"></option>
                                     <option value="1">Featured</option>
-                                    <option value="2">Non-Featured</option>
+                                    <option value="0">Non-Featured</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label">Status</label>
-                                <select class="form-control select2 form-select" data-placeholder="Choose one">
+                                <select class="form-control select2 form-select"  name="status"  data-placeholder="Choose one">
                                     <option label="Choose one"></option>
                                     <option value="1">Active</option>
-                                    <option value="2">Inactive</option>
+                                    <option value="0">Inactive</option>
                                 </select>
                             </div>
 

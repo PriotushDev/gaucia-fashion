@@ -23,6 +23,9 @@
 <script src="{{ asset('/') }}admin/assets/plugins/bootstrap/js/popper.min.js"></script>
 <script src="{{ asset('/') }}admin/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
 <!-- SIDE-MENU JS -->
 <script src="{{ asset('/') }}admin/assets/plugins/sidemenu/sidemenu.js"></script>
 
@@ -83,6 +86,61 @@
 
 <!-- SWITCHER JS -->
 <script src="{{ asset('/') }}admin/assets/switcher/js/switcher.js"></script>
+<script>
+    const alertBox = document.getElementById('autoCloseAlert');
+
+    if (alertBox) {
+        // auto close after 10 seconds
+        setTimeout(() => {
+            alertBox.classList.remove('show');
+            alertBox.classList.add('fade');
+
+            setTimeout(() => {
+                alertBox.remove();
+            }, 500);
+
+        }, 10000);
+    }
+
+    function closeAlert() {
+        if (alertBox) {
+            alertBox.remove();
+        }
+    }
+</script>
+<script>
+    function previewImage(event) {
+        const image = document.getElementById('imagePreview');
+        const file = event.target.files[0];
+
+        if (file) {
+            image.src = URL.createObjectURL(file);
+            image.style.display = 'block';
+        }
+    }
+</script>
+
+<script>
+    axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+    axios.defaults.headers.common['X-CSRF-TOKEN'] =
+        document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+</script>
+<script>
+    function toggleCategoryStatus(categoryId, checkbox) {
+        axios.post(`/admin/categories/${categoryId}/toggle-status`)
+            .then(response => {
+                // success, silent
+                // response.data.status updated
+            })
+            .catch(error => {
+                // rollback UI if error
+                checkbox.checked = !checkbox.checked;
+            });
+    }
+</script>
+
+
+
 
 
 

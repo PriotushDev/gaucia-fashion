@@ -17407,12 +17407,12 @@
     }
     /**
      * [The strategy of the arrengment of data dimensions for dataset]:
-     * "value way": all axes are non-category axes. So series one by one take
+     * "value way": all axes are non-categories axes. So series one by one take
      *     several (the number is coordSysDims.length) dimensions from dataset.
      *     The result of data arrengment of data dimensions like:
      *     | ser0_x | ser0_y | ser1_x | ser1_y | ser2_x | ser2_y |
-     * "category way": at least one axis is category axis. So the the first data
-     *     dimension is always mapped to the first category axis and shared by
+     * "categories way": at least one axis is categories axis. So the the first data
+     *     dimension is always mapped to the first categories axis and shared by
      *     all of the series. The other data dimensions are taken by series like
      *     "value way" does.
      *     The result of data arrengment of data dimensions like:
@@ -17466,14 +17466,14 @@
           datasetRecord.valueWayDim += count; // ??? TODO give a better default series name rule?
           // especially when encode x y specified.
           // consider: when mutiple series share one dimension
-          // category axis, series name should better use
+          // categories axis, series name should better use
           // the other dimsion name. On the other hand, use
           // both dimensions name.
-        } // In category way, the first category axis.
+        } // In categories way, the first categories axis.
         else if (baseCategoryDimIndex === coordDimIdx) {
             pushDim(encode[coordDimName], 0, count);
             pushDim(encodeItemName, 0, count);
-          } // In category way, the other axis.
+          } // In categories way, the other axis.
           else {
               var start = datasetRecord.categoryWayDim;
               pushDim(encode[coordDimName], start, count);
@@ -19850,7 +19850,7 @@
         var dataArrayRows = data; // Rule: Most of the first line are string: it is header.
         // Caution: consider a line with 5 string and 1 number,
         // it still can not be sure it is a head, because the
-        // 5 string may be 5 values of category columns.
+        // 5 string may be 5 values of categories columns.
 
         if (sourceHeader === 'auto' || sourceHeader == null) {
           arrayRowsTravelFirst(function (val) {
@@ -20872,7 +20872,7 @@
       var dimType = opt && opt.type;
 
       if (dimType === 'ordinal') {
-        // If given value is a category string
+        // If given value is a categories string
         var ordinalMeta = opt && opt.ordinalMeta;
         return ordinalMeta ? ordinalMeta.parseAndCollect(value) : value;
       }
@@ -22162,7 +22162,7 @@
     }
 
     function formatTooltipArrayValue(value, series, dataIndex, tooltipDims, colorStr) {
-      // check: category-no-encode-has-axis-data in dataset.html
+      // check: categories-no-encode-has-axis-data in dataset.html
       var data = series.getData();
       var isValueMultipleLine = reduce(value, function (isValueMultipleLine, val, idx) {
         var dimItem = data.getDimensionInfo(idx);
@@ -24211,7 +24211,7 @@
      * `chart.on('click', query, handler);`
      * The `query` can be:
      * + The component type query string, only `mainType` or `mainType.subType`,
-     *   like: 'xAxis', 'series', 'xAxis.category' or 'series.line'.
+     *   like: 'xAxis', 'series', 'xAxis.categories' or 'series.line'.
      * + The component query object, like:
      *   `{seriesIndex: 2}`, `{seriesName: 'xx'}`, `{seriesId: 'some'}`,
      *   `{xAxisIndex: 2}`, `{xAxisName: 'xx'}`, `{xAxisId: 'some'}`.
@@ -32407,8 +32407,8 @@
             dataItem = rawData.getItem(idx, dataItem); // Each data item is value
             // [1, 2]
             // 2
-            // Bar chart, line chart which uses category axis
-            // only gives the 'y' value. 'x' value is the indices of category
+            // Bar chart, line chart which uses categories axis
+            // only gives the 'y' value. 'x' value is the indices of categories
             // Use a tempValue to normalize the value to be a (x, y) value
             // Store the data by dimensions
 
@@ -34174,8 +34174,8 @@
      *         x: xAxisModel,
      *         y: undefined
      *     }),
-     *     // The index of the first category axis in `coordSysDims`.
-     *     // `null/undefined` means no category axis exists.
+     *     // The index of the first categories axis in `coordSysDims`.
+     *     // `null/undefined` means no categories axis exists.
      *     firstCategoryDimIndex: 1,
      *     // To replace user specified encode.
      * }
@@ -34642,21 +34642,21 @@
 
       OrdinalMeta.prototype.parseAndCollect = function (category) {
         var index;
-        var needCollect = this._needCollect; // The value of category dim can be the index of the given category set.
+        var needCollect = this._needCollect; // The value of categories dim can be the index of the given categories set.
         // This feature is only supported when !needCollect, because we should
         // consider a common case: a value is 2017, which is a number but is
-        // expected to be tread as a category. This case usually happen in dataset,
+        // expected to be tread as a categories. This case usually happen in dataset,
         // where it happent to be no need of the index feature.
 
         if (typeof category !== 'string' && !needCollect) {
           return category;
         } // Optimize for the scenario:
-        // category is ['2012-01-01', '2012-01-02', ...], where the input
+        // categories is ['2012-01-01', '2012-01-02', ...], where the input
         // data has been ensured not duplicate and is large data.
         // Notice, if a dataset dimension provide categroies, usually echarts
         // should remove duplication except user tell echarts dont do that
         // (set axis.deduplication = false), because echarts do not know whether
-        // the values in the category dimension has duplication (consider the
+        // the values in the categories dimension has duplication (consider the
         // parallel-aqi example)
 
 
@@ -34869,7 +34869,7 @@
           var ordinalNumber = infoOrdinalNumbers[tickNum];
           ordinalsByTick[tickNum] = ordinalNumber;
           ticksByOrdinal[ordinalNumber] = tickNum;
-        } // Handle that `series.data` only covers part of the `axis.category.data`.
+        } // Handle that `series.data` only covers part of the `axis.categories.data`.
 
 
         var unusedOrdinal = 0;
@@ -35362,7 +35362,7 @@
     }
 
     function doCalBarWidthAndOffset(seriesInfoList) {
-      // Columns info on each category axis. Key is cartesian name
+      // Columns info on each categories axis. Key is cartesian name
       var columnsMap = {};
       each(seriesInfoList, function (seriesInfo, idx) {
         var axisKey = seriesInfo.axisKey;
@@ -36428,7 +36428,7 @@
 
         if (isOrdinal) {
           // FIXME: there is a flaw here: if there is no "block" data processor like `dataZoom`,
-          // and progressive rendering is using, here the category result might just only contain
+          // and progressive rendering is using, here the categories result might just only contain
           // the processed chunk rather than the entire result.
           this._axisDataLen = model.getCategories().length;
         } else {
@@ -36773,7 +36773,7 @@
      * @return Label formatter function.
      *         param: {number} tickValue,
      *         param: {number} idx, the index in all ticks.
-     *                         If category axis, this param is not required.
+     *                         If categories axis, this param is not required.
      *         return: {string} label string.
      */
 
@@ -36790,7 +36790,7 @@
       } else if (typeof labelFormatter === 'string') {
         return function (tpl) {
           return function (tick) {
-            // For category axis, get raw value; for numeric axis,
+            // For categories axis, get raw value; for numeric axis,
             // get formatted label like '1,333,444'.
             var label = axis.scale.getLabel(tick);
             var text = tpl.replace('{value}', label != null ? label : '');
@@ -36801,7 +36801,7 @@
         return function (cb) {
           return function (tick, idx) {
             // The original intention of `idx` is "the index of the tick in all ticks".
-            // But the previous implementation of category axis do not consider the
+            // But the previous implementation of categories axis do not consider the
             // `axisLabel.interval`, which cause that, for example, the `interval` is
             // `1`, then the ticks "name5", "name7", "name9" are displayed, where the
             // corresponding `idx` are `0`, `2`, `4`, but not `0`, `1`, `2`. So we keep
@@ -36822,9 +36822,9 @@
       }
     }
     function getAxisRawValue(axis, tick) {
-      // In category axis with data zoom, tick is not the original
+      // In categories axis with data zoom, tick is not the original
       // index of axis.data. So tick should not be exposed to user
-      // in category axis.
+      // in categories axis.
       return axis.type === 'category' ? axis.scale.getLabel(tick) : tick.value;
     }
     /**
@@ -36842,7 +36842,7 @@
 
       var realNumberScaleTicks;
       var tickCount;
-      var categoryScaleExtent = scale.getExtent(); // Optimize for large category data, avoid call `getTicks()`.
+      var categoryScaleExtent = scale.getExtent(); // Optimize for large categories data, avoid call `getTicks()`.
 
       if (scale instanceof OrdinalScale) {
         tickCount = scale.count();
@@ -37019,7 +37019,7 @@
         // Currently AxisModelCommonMixin has nothing to do with the
         // the requirements of `axisHelper.createScaleByModel`. For
         // example the method `getCategories` and `getOrdinalMeta`
-        // are required for `'category'` axis, and ecModel are required
+        // are required for `'categories'` axis, and ecModel are required
         // for `'time'` axis. But occationally echarts-gl happened
         // to only use `'value'` axis.
         // zrUtil.mixin(axisModel, AxisModelCommonMixin);
@@ -37229,7 +37229,7 @@
       }
 
       var ticks;
-      var tickCategoryInterval; // Optimize for the case that large category data and no label displayed,
+      var tickCategoryInterval; // Optimize for the case that large categories data and no label displayed,
       // we should not return all ticks.
 
       if (!tickModel.get('show') || axis.scale.isBlank()) {
@@ -37299,7 +37299,7 @@
       return result != null ? result : inner$4(axis).autoInterval = axis.calculateCategoryInterval();
     }
     /**
-     * Calculate interval for category axis ticks and labels.
+     * Calculate interval for categories axis ticks and labels.
      * To get precise result, at least one of `getRotate` and `isHorizontal`
      * should be implemented in axis.
      */
@@ -37312,7 +37312,7 @@
       var ordinalScale = axis.scale;
       var ordinalExtent = ordinalScale.getExtent(); // Providing this method is for optimization:
       // avoid generating a long array by `getTicks`
-      // in large category data case.
+      // in large categories data case.
 
       var tickCount = ordinalScale.count();
 
@@ -37331,7 +37331,7 @@
       var unitW = Math.abs(unitSpan * Math.cos(rotation));
       var unitH = Math.abs(unitSpan * Math.sin(rotation));
       var maxW = 0;
-      var maxH = 0; // Caution: Performance sensitive for large category data.
+      var maxH = 0; // Caution: Performance sensitive for large categories data.
       // Consider dataZoom, we should make appropriate step to avoid O(n) loop.
 
       for (; tickValue <= ordinalExtent[1]; tickValue += step) {
@@ -37412,7 +37412,7 @@
       } // (1) Only add min max label here but leave overlap checking
       // to render stage, which also ensure the returned list
       // suitable for splitLine and splitArea rendering.
-      // (2) Scales except category always contain min max label so
+      // (2) Scales except categories always contain min max label so
       // do not need to perform this process.
 
 
@@ -37574,7 +37574,7 @@
       /**
        * Different from `zrUtil.map(axis.getTicks(), axis.dataToCoord, axis)`,
        * `axis.getTicksCoords` considers `onBand`, which is used by
-       * `boundaryGap:true` of category axis and splitLine and splitArea.
+       * `boundaryGap:true` of categories axis and splitLine and splitArea.
        * @param opt.tickModel default: axis.model.getModel('axisTick')
        * @param opt.clamp If `true`, the first and the last
        *        tick must be at the axis end points. Otherwise, clip ticks
@@ -37657,7 +37657,7 @@
         return Math.abs(size) / len;
       };
       /**
-       * Only be called in category axis.
+       * Only be called in categories axis.
        * Can be overrided, consider other axes like in 3D.
        * @return Auto interval for cateogry axis tick and label
        */
@@ -41759,7 +41759,7 @@
 
       if (!categoryAxis) {
         return;
-      } // Note that category label interval strategy might bring some weird effect
+      } // Note that categories label interval strategy might bring some weird effect
       // in some scenario: users may wonder why some of the symbols are not
       // displayed. So we show all symbols as possible as we can.
 
@@ -41767,7 +41767,7 @@
       if (isAuto // Simplify the logic, do not determine label overlap here.
       && canShowAllSymbolForCategory(categoryAxis, data)) {
         return;
-      } // Otherwise follow the label interval strategy on category axis.
+      } // Otherwise follow the label interval strategy on categories axis.
 
 
       var categoryDataDim = data.mapDimension(categoryAxis.dim);
@@ -41782,9 +41782,9 @@
     }
 
     function canShowAllSymbolForCategory(categoryAxis, data) {
-      // In mose cases, line is monotonous on category axis, and the label size
+      // In mose cases, line is monotonous on categories axis, and the label size
       // is close with each other. So we check the symbol size and some of the
-      // label size alone with the category axis to estimate whether all symbol
+      // label size alone with the categories axis to estimate whether all symbol
       // can be shown without overlap.
       var axisExtent = categoryAxis.getExtent();
       var availSize = Math.abs(axisExtent[1] - axisExtent[0]) / categoryAxis.scale.count();
@@ -42064,7 +42064,7 @@
               return [points[idx * 2], points[idx * 2 + 1]];
             }
           }); // In the case data zoom triggerred refreshing frequently
-          // Data may not change if line has a category axis. So it should animate nothing
+          // Data may not change if line has a categories axis. So it should animate nothing
 
           if (!isPointsSame(this._stackedOnPoints, stackedOnPoints) || !isPointsSame(this._points, points)) {
             if (hasAnimation) {
@@ -43663,7 +43663,7 @@
       if ("development" !== 'production') {
         if (realtimeSortOption) {
           if (baseAxis.type !== 'category') {
-            warn('`realtimeSort` will not work because this bar series is not based on a category axis.');
+            warn('`realtimeSort` will not work because this bar series is not based on a categories axis.');
           }
 
           if (coordSys.type !== 'cartesian2d') {
@@ -45720,7 +45720,7 @@
     var categoryAxis = merge({
       // The gap at both ends of the axis. For categoryAxis, boolean.
       boundaryGap: true,
-      // Set false to faster category collection.
+      // Set false to faster categories collection.
       deduplication: null,
       // splitArea: {
       // show: false
@@ -45927,7 +45927,7 @@
     }
 
     function getAxisType(option) {
-      // Default axis with data is category axis
+      // Default axis with data is categories axis
       return option.type || (option.data ? 'category' : 'value');
     }
 
@@ -46669,7 +46669,7 @@
         // TODO: onZero of multiple axes.
         return otherAxisOnZeroOf ? [otherAxisOnZeroOf] : [];
       }; // onZero can not be enabled in these two situations:
-      // 1. When any other axis is a category axis.
+      // 1. When any other axis is a categories axis.
       // 2. When no axis is cross 0 point.
 
 
@@ -47261,9 +47261,9 @@
             text: formattedLabel,
             align: itemLabelModel.getShallow('align', true) || labelLayout.textAlign,
             verticalAlign: itemLabelModel.getShallow('verticalAlign', true) || itemLabelModel.getShallow('baseline', true) || labelLayout.textVerticalAlign,
-            fill: typeof textColor === 'function' ? textColor( // (1) In category axis with data zoom, tick is not the original
+            fill: typeof textColor === 'function' ? textColor( // (1) In categories axis with data zoom, tick is not the original
             // index of axis.data. So tick should not be exposed to user
-            // in category axis.
+            // in categories axis.
             // (2) Compatible with previous version, which always use formatted label as
             // input. But in interval scale the formatted label is like '223,445', which
             // maked user repalce ','. So we modify it to return original val but remain
@@ -47417,7 +47417,7 @@
       var volatileOption = {};
       each(fields, function (field) {
         volatileOption[field] = clone(tooltipAxisPointerModel.get(field));
-      }); // category axis do not auto snap, otherwise some tick that do not
+      }); // categories axis do not auto snap, otherwise some tick that do not
       // has value can not be hovered. value/time/log axis default snap if
       // triggered from tooltip and trigger tooltip.
 
@@ -47514,7 +47514,7 @@
       var scale = axisInfo.axis.scale;
       var option = axisPointerModel.option;
       var status = axisPointerModel.get('status');
-      var value = axisPointerModel.get('value'); // Parse init value for category and time axis.
+      var value = axisPointerModel.get('value'); // Parse init value for categories and time axis.
 
       if (value != null) {
         value = scale.parse(value);
@@ -47797,7 +47797,7 @@
                 // Still show axis tick or axisLine if other axis is value / log
                 return true;
               }
-            } // Not show axisTick or axisLine if other axis is category / time
+            } // Not show axisTick or axisLine if other axis is categories / time
 
 
             return false;
@@ -49148,7 +49148,7 @@
         }
 
         var diff = value - seriesNestestValue;
-        var dist = Math.abs(diff); // Consider category case
+        var dist = Math.abs(diff); // Consider categories case
 
         if (dist <= minDist) {
           if (dist < minDist || diff >= 0 && minDiff < 0) {
@@ -50335,7 +50335,7 @@
         }
 
         if (needAuto) {
-          // If no parallel axis, find the first category axis as default. (Also consider polar).
+          // If no parallel axis, find the first categories axis as default. (Also consider polar).
           each(DATA_ZOOM_AXIS_DIMENSIONS, function (axisDim) {
             if (!needAuto) {
               return;
@@ -50872,7 +50872,7 @@
           // to percent '100%').
 
           if (rangePropMode[idx] === 'percent') {
-            boundPercent == null && (boundPercent = percentExtent[idx]); // Use scale.parse to math round for category or time axis.
+            boundPercent == null && (boundPercent = percentExtent[idx]); // Use scale.parse to math round for categories or time axis.
 
             boundValue = scale.parse(linearMap(boundPercent, percentExtent, dataExtent));
           } else {
@@ -51099,7 +51099,7 @@
       // when zooming. But it is difficult to know what is "consistent", considering
       // axes have different type or even different meanings (For example, two
       // time axes are used to compare data of the same date in different years).
-      // So basically dataZoom just obtains extent by series.data (in category axis
+      // So basically dataZoom just obtains extent by series.data (in categories axis
       // extent can be obtained from axis.data).
       // Nevertheless, user can set min/max/scale on axes to make extent of axes
       // consistent.
@@ -51941,7 +51941,7 @@
     var ITEM_SPLITER = '\t';
     /**
      * Group series into two types
-     *  1. on category axis, like line, bar
+     *  1. on categories axis, like line, bar
      *  2. others, like scatter, pie
      */
 
@@ -53451,7 +53451,7 @@
           (area.coordRanges || (area.coordRanges = [])).push(coordRange); // area.coordRange is the first of area.coordRanges
 
           if (!area.coordRange) {
-            area.coordRange = coordRange; // In 'category' axis, coord to pixel is not reversible, so we can not
+            area.coordRange = coordRange; // In 'categories' axis, coord to pixel is not reversible, so we can not
             // rebuild range by coordRange accrately, which may bring trouble when
             // brushing only one item. So we use __rangeOffset to rebuilding range
             // by coordRange. And this it only used in brush component so it is no
@@ -54053,7 +54053,7 @@
           type: 'line',
           // Valid when type is line, appoint tooltip line locate on which line. Optional
           // legal values: 'x' | 'y' | 'angle' | 'radius' | 'auto'
-          // default is 'auto', chose the axis which type is category.
+          // default is 'auto', chose the axis which type is categories.
           // for multiply y axis, cartesian coord chose x axis, polar chose angle axis
           axis: 'auto',
           animation: 'auto',

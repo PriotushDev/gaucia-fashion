@@ -8,11 +8,11 @@ class SubCategoryController extends Controller
 {
     public function index()
     {
-        return view('admin.sub-category.index');
+        return view('admin.sub-categories.index');
     }
 
     public function create()
     {
-        return view('admin.sub-category.create');
+        return view('admin.sub-categories.create');
     }
 }

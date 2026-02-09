@@ -13,14 +13,17 @@
     <meta name="author" content="Spruko Technologies Private Limited">
     <meta name="keywords" content="laravel admin template, bootstrap admin template, admin dashboard template, admin dashboard, admin template, admin, bootstrap 5, laravel admin, laravel admin dashboard template, laravel ui template, laravel admin panel, admin panel, laravel admin dashboard, laravel template, admin ui dashboard">
 
+
+
     <!-- TITLE -->
-    <title>Noa - Laravel Bootstrap 5 Admin & Dashboard Template</title>
+    <title>@yield('title')</title>
 
     <!-- FAVICON -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('/') }}admin/assets/images/brand/favicon.ico" />
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="{{ asset('/') }}admin/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- STYLE CSS -->
     <link href="{{ asset('/') }}admin/assets/css/style.css" rel="stylesheet" />
@@ -34,6 +37,10 @@
     <!-- INTERNAL Switcher css -->
     <link href="{{ asset('/') }}admin/assets/switcher/css/switcher.css" rel="stylesheet">
     <link href="{{ asset('/') }}admin/assets/switcher/demo.css" rel="stylesheet">
+
+    <!-- for status toggle btn -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 </head>
 <body class="ltr app sidebar-mini">

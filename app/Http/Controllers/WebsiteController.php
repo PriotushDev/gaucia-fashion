@@ -13,12 +13,12 @@ class WebsiteController extends Controller
 
     public function all_products()
     {
-        return view('website.category.all-product');
+        return view('website.categories.all-product');
     }
 
     public function new_arrivals()
     {
-        return view('website.category.new-arrivals');
+        return view('website.categories.new-arrivals');
     }
 
     public function product_detail()
