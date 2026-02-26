@@ -69,7 +69,8 @@
                                                name="q"
                                                value="{{ request('q') }}"
                                                class="form-control"
-                                               placeholder="Search by category name">
+                                               placeholder="Search by category name"
+                                        >
                                     </div>
 
                                     <div class="col-md-3">

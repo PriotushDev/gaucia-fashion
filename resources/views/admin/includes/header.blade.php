@@ -14,6 +14,7 @@
     <meta name="keywords" content="laravel admin template, bootstrap admin template, admin dashboard template, admin dashboard, admin template, admin, bootstrap 5, laravel admin, laravel admin dashboard template, laravel ui template, laravel admin panel, admin panel, laravel admin dashboard, laravel template, admin ui dashboard">
 
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- TITLE -->
     <title>@yield('title')</title>
@@ -41,6 +42,16 @@
     <!-- for status toggle btn -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        axios.defaults.headers.common['X-CSRF-TOKEN'] =
+            document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    </script>
+
+    @yield('scripts')
+
 
 </head>
 <body class="ltr app sidebar-mini">

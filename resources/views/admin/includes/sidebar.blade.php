@@ -35,8 +35,8 @@
                     </a>
                     <ul class="slide-menu">
                         <li class="side-menu-label1"><a href="javascript:void(0)">Brand Module</a></li>
-                        <li><a href="{{ route('admin.brand.create') }}" class="slide-item">Add Brand</a></li>
-                        <li><a href="{{ route('admin.brand.index') }}" class="slide-item">Manage Brand</a></li>
+                        <li><a href="{{ route('admin.brands.create') }}" class="slide-item">Add Brand</a></li>
+                        <li><a href="{{ route('admin.brands.index') }}" class="slide-item">Manage Brand</a></li>
                     </ul>
                 </li>
                 {{--Category Module--}}
@@ -58,8 +58,8 @@
                         <span class="side-menu__label">Sub Category Module</span><i class="angle fa fa-angle-right"></i></a>
                     <ul class="slide-menu">
                         <li class="side-menu-label1"><a href="javascript:void(0)">Sub Category Module</a></li>
-                        <li><a href="{{ route('admin.sub_category.create') }}" class="slide-item">Add Sub Category</a></li>
-                        <li><a href="{{ route('admin.sub_category.index') }}" class="slide-item">Manage Sub Category</a></li>
+                        <li><a href="{{ route('admin.subcategories.create') }}" class="slide-item">Add Sub Category</a></li>
+                        <li><a href="{{ route('admin.subcategories.index') }}" class="slide-item">Manage Sub Category</a></li>
                     </ul>
                 </li>
                 {{--Unit Module--}}

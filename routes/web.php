@@ -27,15 +27,18 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
     // Brand Route
-    Route::get('/brand', [BrandController::class, 'index'])->name('admin.brand.index');
-    Route::get('/brand/create', [BrandController::class, 'create'])->name('admin.brand.create');
-    Route::post('/brand/store', [BrandController::class, 'store'])->name('brand.store');
+
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::resource('brands', BrandController::class);
+        Route::post('brands/{brand}/toggle-status',
+            [BrandController::class, 'toggleStatus'])
+            ->name('brands.toggle-status');
+    });
+
 
 
 
     // Category Route
-//    Route::get('/categories', [CategoryController::class, 'index'])->name('admin.categories.index');
-//    Route::get('/categories/create', [CategoryController::class, 'create'])->name('admin.categories.create');
 
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('categories', CategoryController::class);
@@ -45,8 +48,20 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
 
 
     // Sub-Category Route
-    Route::get('/sub-categories', [SubCategoryController::class, 'index'])->name('admin.sub_category.index');
-    Route::get('/sub-categories/create', [SubCategoryController::class, 'create'])->name('admin.sub_category.create');
+    Route::prefix('admin')
+        ->name('admin.')
+        ->group(function () {
+
+            Route::resource('subcategories', SubCategoryController::class);
+
+            Route::post(
+                'subcategories/{subCategory}/toggle-status',
+                [SubCategoryController::class,'toggleStatus']
+            )->name('subcategories.toggle-status');
+
+        });
+
+
 
 
     // Unit Route
