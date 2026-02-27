@@ -50,15 +50,16 @@ class SubCategoryController extends Controller
             ->with('success','Sub Category created successfully');
     }
 
-    public function edit(SubCategory $subCategory)
+    public function edit(SubCategory $subcategory)
     {
+//        dd($subCategory);
         $categories = Category::where('status',1)->get();
 
         return view('admin.sub-categories.edit',
-            compact('subCategory','categories'));
+            compact('subcategory','categories'));
     }
 
-    public function update(Request $request, SubCategory $subCategory)
+    public function update(Request $request, SubCategory $subcategory)
     {
         $validated = $request->validate([
             'category_id' => 'required|exists:categories,id',
@@ -70,9 +71,9 @@ class SubCategoryController extends Controller
 
         if ($request->hasFile('image')) {
 
-            if ($subCategory->image &&
-                Storage::disk('public')->exists($subCategory->image)) {
-                Storage::disk('public')->delete($subCategory->image);
+            if ($subcategory->image &&
+                Storage::disk('public')->exists($subcategory->image)) {
+                Storage::disk('public')->delete($subcategory->image);
             }
 
             $imageName = Str::uuid().'.'.$request->image->extension();
@@ -81,7 +82,7 @@ class SubCategoryController extends Controller
                     $imageName,'public');
         }
 
-        $subCategory->update($validated);
+        $subcategory->update($validated);
 
         return redirect()
             ->route('admin.subcategories.index')
