@@ -237,7 +237,8 @@
                                             <textarea
                                                 name="description"
                                                 class="form-control"
-                                                rows="5">{{ $product->description }}</textarea>
+                                                id="summernote"
+                                                rows="5">{!! $product->description !!}</textarea>
 
                                         </div>
 

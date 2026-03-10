@@ -111,6 +111,8 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
+        $product->load('images');
+
         $categories = Category::all();
         $subcategories = SubCategory::all();
         $brands = Brand::all();
@@ -162,6 +164,19 @@ class ProductController extends Controller
                 $request->thumbnail->storeAs('products',$thumbnailName,'public');
         }
 
+        if($request->hasFile('images'))
+        {
+            foreach($request->file('images') as $image)
+            {
+                $path = $image->store('products','public');
+
+                ProductImage::create([
+                    'product_id' => $product->id,
+                    'image' => $path
+                ]);
+            }
+        }
+
 
         $product->update($validated);
 
@@ -180,6 +195,17 @@ class ProductController extends Controller
         return redirect()
             ->route('admin.products.index')
             ->with('success','Product deleted successfully');
+    }
+
+    public function deleteImage(ProductImage $image)
+    {
+        Storage::disk('public')->delete($image->image);
+
+        $image->delete();
+
+        return response()->json([
+            'success' => true
+        ]);
     }
 
 

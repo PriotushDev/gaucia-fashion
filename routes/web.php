@@ -76,15 +76,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
 
 
     // Product Route
-//    Route::prefix('admin')->name('admin.')->group(function () {
-//
-//        Route::resource('products', ProductController::class);
-//
-//        Route::post('products/{products}/toggle-status',
-//            [ProductController::class,'toggleStatus'])
-//            ->name('products.toggle-status');
-//
-//    });
     Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::resource('products', ProductController::class);
@@ -95,6 +86,11 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
         )->name('products.toggle-status');
 
     });
+
+    Route::delete(
+        'admin/product-images/{image}',
+        [ProductController::class,'deleteImage']
+    )->name('product.images.delete');
 
 
 });
