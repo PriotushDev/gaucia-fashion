@@ -28036,9 +28036,9 @@
         this.name = name;
       }
       /**
-       * Get center point in data unit. That is,
-       * for GeoJSONRegion, the unit is lat/lng,
-       * for GeoSVGRegion, the unit is SVG local coord.
+       * Get center point in data units. That is,
+       * for GeoJSONRegion, the units is lat/lng,
+       * for GeoSVGRegion, the units is SVG local coord.
        */
 
 
@@ -28354,8 +28354,8 @@
         // - `(0, 0, svgWidth, svgHeight)` defines the viewport of the SVG, or say,
         //   "viewport boundingRect", or `boundingRect` for short.
         // - `viewBox` defines the transform from the real content ot the viewport.
-        //   `viewBox` has the same unit as the content of SVG.
-        //   If `viewBox` exists, a transform is defined, so the unit of `svgWidth/svgHeight` become
+        //   `viewBox` has the same units as the content of SVG.
+        //   If `viewBox` exists, a transform is defined, so the units of `svgWidth/svgHeight` become
         //   different from the content of SVG. Otherwise, they are the same.
         //
         // If both `svgWidth/svgHeight/viewBox` are specified in a SVG file, the transform rule will be:
@@ -29015,7 +29015,7 @@
        * Note:
        * Do not support that register multiple geoJSON or SVG
        * one map name. Because different geoJSON and SVG have
-       * different unit. It's not easy to make sure how those
+       * different units. It's not easy to make sure how those
        * units are mapping/normalize.
        * If intending to use multiple geoJSON or SVG, we can
        * use multiple geo coordinate system.
@@ -36165,7 +36165,7 @@
 
             if (tickCount > targetTickNum * 1.5 && lastLevelTickCount > targetTickNum / 1.5) {
               break;
-            } // Only treat primary time unit as one level.
+            } // Only treat primary time units as one level.
 
 
             levelsTicks.push(levelTicksRemoveDuplicated);
@@ -50861,7 +50861,7 @@
           // on `valueProp` ('startValue', 'endValue'). (They are based on the data extent
           // but not min/max of axis, which will be calculated by data window then).
           // The former one is suitable for cases that a dataZoom component controls multiple
-          // axes with different unit or extent, and the latter one is suitable for accurate
+          // axes with different units or extent, and the latter one is suitable for accurate
           // zoom by pixel (e.g., in dataZoomSelect).
           // we use `getRangePropMode()` to mark which prop is used. `rangePropMode` is updated
           // only when setOption or dispatchAction, otherwise it remains its original value.
@@ -54027,7 +54027,7 @@
         confine: null,
         showDelay: 0,
         hideDelay: 100,
-        // Animation transition time, unit is second
+        // Animation transition time, units is second
         transitionDuration: 0.4,
         enterable: false,
         backgroundColor: '#fff',
@@ -54036,9 +54036,9 @@
         shadowColor: 'rgba(0, 0, 0, .2)',
         shadowOffsetX: 1,
         shadowOffsetY: 2,
-        // tooltip border radius, unit is px, default is 4
+        // tooltip border radius, units is px, default is 4
         borderRadius: 4,
-        // tooltip border width, unit is px, default is 0 (no border)
+        // tooltip border width, units is px, default is 0 (no border)
         borderWidth: 1,
         // Tooltip inside padding, default is 5 for all direction
         // Array is allowed to set up, right, bottom, left, same with css

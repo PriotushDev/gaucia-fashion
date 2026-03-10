@@ -62,11 +62,20 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
         });
 
 
+    // Unit Route
+    Route::prefix('admin')->name('admin.')->group(function () {
 
+        Route::resource('units', UnitController::class);
+
+        Route::post('units/{unit}/toggle-status',
+            [UnitController::class,'toggleStatus'])
+            ->name('units.toggle-status');
+
+    });
 
     // Unit Route
-    Route::get('/unit', [UnitController::class, 'index'])->name('admin.unit.index');
-    Route::get('/unit/create', [UnitController::class, 'create'])->name('admin.unit.create');
+//    Route::get('/units', [UnitController::class, 'index'])->name('admin.units.index');
+//    Route::get('/units/create', [UnitController::class, 'create'])->name('admin.units.create');
 
 
     // Product Route
