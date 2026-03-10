@@ -19,11 +19,14 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = Product::with(['category','brand','unit'])
-            ->latest()
-            ->paginate(10);
 
-        return view('admin.products.index', compact('products'));
+        $products = Product::latest()->paginate(10);
+
+        return view(
+            'admin.products.index',
+            compact('products')
+        );
+
     }
 
 
@@ -182,18 +185,15 @@ class ProductController extends Controller
 
     public function toggleStatus(Product $product)
     {
-
         $product->status = !$product->status;
 
         $product->save();
 
         return response()->json([
-
-            'success'=>true,
-            'status'=>$product->status
-
+            'success' => true,
+            'status' => $product->status
         ]);
-
     }
+
 
 }
