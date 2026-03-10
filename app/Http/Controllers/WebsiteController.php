@@ -13,7 +13,7 @@ class WebsiteController extends Controller
 
     public function all_products()
     {
-        return view('website.categories.all-product');
+        return view('website.categories.all-products');
     }
 
     public function new_arrivals()
@@ -23,7 +23,7 @@ class WebsiteController extends Controller
 
     public function product_detail()
     {
-        return view('website.product.index');
+        return view('website.products.index');
     }
 
 

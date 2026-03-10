@@ -15,7 +15,7 @@ Route::get('/all-products', [WebsiteController::class, 'all_products'])->name('w
 Route::get('/new-arrivals', [WebsiteController::class, 'new_arrivals'])->name('website.categories.new.arrivals');
 
 // Product information
-Route::get('/product/detail', [WebsiteController::class, 'product_detail'])->name('website.product.detail');
+Route::get('/products/detail', [WebsiteController::class, 'product_detail'])->name('website.products.detail');
 
 // Cart info
 Route::get('/cart', [CartController::class, 'index'])->name('website.cart.index');
@@ -73,14 +73,18 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
 
     });
 
-    // Unit Route
-//    Route::get('/units', [UnitController::class, 'index'])->name('admin.units.index');
-//    Route::get('/units/create', [UnitController::class, 'create'])->name('admin.units.create');
 
 
     // Product Route
-    Route::get('/product', [ProductController::class, 'index'])->name('admin.product.index');
-    Route::get('/product/create', [ProductController::class, 'create'])->name('admin.product.create');
+    Route::prefix('admin')->name('admin.')->group(function () {
+
+        Route::resource('products', ProductController::class);
+
+        Route::post('products/{products}/toggle-status',
+            [ProductController::class,'toggleStatus'])
+            ->name('products.toggle-status');
+
+    });
 
 
 
