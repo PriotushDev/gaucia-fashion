@@ -187,6 +187,22 @@ class ProductController extends Controller
 
     }
 
+    public function show(Product $product)
+    {
+        $product->load([
+            'category',
+            'subcategory',
+            'brand',
+            'unit',
+            'images'
+        ]);
+
+        return view(
+            'admin.products.show',
+            compact('product')
+        );
+    }
+
 
     public function destroy(Product $product)
     {

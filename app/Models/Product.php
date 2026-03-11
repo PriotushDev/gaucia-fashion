@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Product extends Model
 {
@@ -51,6 +52,31 @@ class Product extends Model
     public function images()
     {
         return $this->hasMany(ProductImage::class);
+    }
+
+    /**
+     * Automatically delete images when product is deleted
+     */
+    protected static function booted()
+    {
+        static::deleting(function ($product) {
+
+            // Delete thumbnail
+            if ($product->thumbnail && Storage::disk('public')->exists($product->thumbnail)) {
+                Storage::disk('public')->delete($product->thumbnail);
+            }
+
+            // Delete gallery images
+            foreach ($product->images as $image) {
+
+                if (Storage::disk('public')->exists($image->image)) {
+                    Storage::disk('public')->delete($image->image);
+                }
+
+                $image->delete();
+            }
+
+        });
     }
 
 }

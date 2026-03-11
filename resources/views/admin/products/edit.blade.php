@@ -257,7 +257,7 @@
                                             @if($product->thumbnail)
 
                                                 <div class="mt-2">
-                                                    <img src="{{ asset('storage/'.$product->thumbnail) }}" width="80">
+                                                    <img src="{{ asset('storage/'.$product->thumbnail) }}" width="100" class="border ">
                                                 </div>
 
                                             @endif
@@ -301,7 +301,7 @@
                                                     <div class="col-md-2 text-center mb-3">
 
                                                         <img src="{{ asset('storage/'.$image->image) }}"
-                                                             class="img-fluid border rounded mb-2">
+                                                             class="img-fluid border mb-2">
 
                                                         <br>
 
